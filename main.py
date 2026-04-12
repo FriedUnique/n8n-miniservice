@@ -13,8 +13,8 @@ def get_quote(ticker: str):
         # stock = yf.Ticker(ticker)
         # hist = stock.history(period="1d")
         
-        if hist.empty:
-            raise HTTPException(status_code=404, detail="Ticker not found or no data")
+        # if hist.empty:
+        #     raise HTTPException(status_code=404, detail="Ticker not found or no data")
 
         # Package the exact JSON format n8n wants
         payload = [
