@@ -41,7 +41,7 @@ def get_quote(ticker: str):
     
 import requests
 
-url = "https://gwmbot.app.n8n.cloud/webhook-test/c3a6f221-7ea9-4795-9357-15520f9b6dc4"
+url = "https://gwmbot.app.n8n.cloud/webhook-test/079724dc-004c-4453-a152-01a61acd2f81"
 
 universe = ["AAPL", "NVDA"]
 
