@@ -2,8 +2,6 @@ from fastapi import FastAPI, HTTPException
 import yfinance as yf
 import pandas as pd
 
-import json
-
 from responceGenerator import ResponceGenerator
 from sections.technicalSection import Technicals
 from sections.alternativeSection import Alternative
@@ -22,7 +20,7 @@ def read_root():
 def get_quote(ticker: str):
     try:
         stock = yf.Ticker(ticker)
-        data = stock.history(interval="30m", period="1mo")
+        data = stock.history(interval="1h", period="1mo")
         opt = stock.option_chain(stock.options[0])
 
         dataContainer = StockData(data, {"Calls": opt.calls, "Puts": opt.puts}, stock.info, stock.financials)
