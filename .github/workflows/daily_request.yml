@@ -1,0 +1,25 @@
+name: Send API Request Every 3 Hours
+
+on:
+  schedule:
+    # This syntax means: "At minute 0, every 3rd hour"
+    - cron: '0 */3 * * *' 
+  workflow_dispatch: # This lets you run it manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run main
+        run: python main.py
