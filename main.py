@@ -43,6 +43,38 @@ def get_quote(ticker: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
+
+@app.get("/test")
+def test():
+        return {
+        "EXAMPLE": "NOT REAL",
+        "asset_context": {
+            "ticker": "AAPL",
+            "sector": "Technology",
+            "price": 270.185,
+            "SMA-20": 267.987,
+            "1_week_return_pct": 4.894
+        },
+        "techincals": {
+            "VWAP": 255.045,
+            "VWAP_vs_price_pct": "5.936 %",
+            "relative_volume_rvol_pct": "61.069 %",
+            "average_true_range_atr": 1.223,
+            "price_vs_sma30_pct": "1.34 %",
+            "bbands_bandwidth": 0.049,
+            "bbands_bandwidth_trend_pct": 1.2618551454414242,
+            "chaikin_money_flow": 0.0
+        },
+        "alternative": {
+            "put_call_ratio_vol": 0.39,
+            "short_percent_of_float": 0.009,
+            "beta": 1.109,
+            "float_shares": 14656035251,
+            "shares_outstanding": 14681140000
+        },
+        "macro_context": {}
+    }
+    
 @app.get("/headlines/{ticker}")
 def get_news(ticker: str):
     try:
