@@ -84,7 +84,3 @@ def get_quote(ticker: str):
 
     return rg.produceJson()
 
-# Run the server using uvicorn if executed directly
-if __name__ == "__main__":
-    print(get_quote("cash:TSLA"))
-    # uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
