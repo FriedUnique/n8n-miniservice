@@ -7,15 +7,9 @@ class Alternative(Section): # Inherit your (Section) here
         super().__init__(name)
 
     def calculate(self, data: StockData):
-        optionsData = self._assertRequiredKeysDict(data.options, ["Puts", "Calls"])
         infoData = self._assertRequiredKeysDict(data.info, ["shortPercentOfFloat", "beta", "floatShares", "sharesOutstanding"])
         self._indicators = {}
 
-        if optionsData == {}:
-            print("Insufficient data to calculate fundamentals.")
-            return
-        
-        self._PutCallRatio(optionsData)
         self._marketStructre(infoData)
         
 
