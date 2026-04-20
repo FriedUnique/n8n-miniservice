@@ -65,8 +65,8 @@ def get_quote(ticker: str):
 
     # 2. Fetch current asset context (replaces yfinance 'info')
 
-    # 4. Instantiate your container
     dataContainer = StockData(data, {"Calls": pd.DataFrame(), "Puts": pd.DataFrame()}, {}, pd.DataFrame())
+
 
     # 5. Run your custom analysis sections
     rg = ResponceGenerator()
