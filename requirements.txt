@@ -5,5 +5,3 @@ fastapi
 uvicorn
 pyarrow
 matplotlib
-io
-base64
