@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class StockData:
+    ticker: str
     ohlc: pd.DataFrame
     options: dict[str, pd.DataFrame]
     info: dict

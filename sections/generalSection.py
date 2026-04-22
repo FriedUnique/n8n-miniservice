@@ -24,6 +24,7 @@ class General(Section):
 
 
         self._indicators = {
+            "ticker": data.ticker,
             "price": round(priceData["Close"].iloc[-1], self._ACCURACY),
             "SMA-20": round(sma20,self._ACCURACY),
             "EMA-21": round(ema21, self.ACCURACY),

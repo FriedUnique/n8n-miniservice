@@ -9,6 +9,7 @@ from sections.technicalSection import Technicals
 from sections.alternativeSection import Alternative
 from sections.generalSection import General
 from sections.macroSection import Macro
+from sections.chartSection import Chart
 from section import StockData
 
 app = FastAPI(title="Hyperliquid Analysis API")
@@ -53,20 +54,22 @@ def get_quote(ticker: str):
     if data is None or data.empty:
         raise HTTPException(status_code=404, detail=f"No data found for ticker '{ticker}' on Hyperliquid.")
 
-    ticker_yf = yf.Ticker(ticker.replace("cash:", ""))
+    ticker_yf = yf.Ticker(ticker.split(":")[1])
     asset_context = ticker_yf.info
 
-    dataContainer = StockData(data, {"Calls": pd.DataFrame(), "Puts": pd.DataFrame()}, asset_context, pd.DataFrame())
+    dataContainer = StockData(ticker.split(":")[1], data, {"Calls": pd.DataFrame(), "Puts": pd.DataFrame()}, asset_context, pd.DataFrame())
 
     rg = ResponceGenerator()
     general = General("asset_context")
     tech = Technicals("technicals")
     alt = Alternative("alternative")
     macro = Macro("macro_context")
+    chart = Chart("chart")
 
     rg.addSection(general)
     rg.addSection(tech)
     rg.addSection(macro)
+    rg.addSection(chart)
 
     rg.calculate(dataContainer)
 

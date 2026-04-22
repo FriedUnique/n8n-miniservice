@@ -3,3 +3,7 @@ pandas
 TA-Lib
 fastapi
 uvicorn
+pyarrow
+matplotlib
+io
+base64
